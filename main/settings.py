@@ -1,4 +1,5 @@
 
+import os
 from pathlib import Path
 
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -20,11 +21,11 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
 
-    'blog',
-    'user',
-    'general',
+    'blog.apps.BlogConfig',
+    'user.apps.UserConfig',
+    'general.apps.GeneralConfig',
 
-    
+
 ]
 
 MIDDLEWARE = [
@@ -93,7 +94,15 @@ USE_TZ = True
 
 
 
+STATICFILES_DIRS = os.path.join(BASE_DIR, 'static'),
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles_build', 'static')
+
 STATIC_URL = 'static/'
 
 
+MEDIA_URL = 'media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
+
+
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+AUTH_USER_MODEL = 'user.User'
