@@ -1,10 +1,9 @@
 from django.contrib import admin
+from .models import *
 
 class PostAdmin(admin.ModelAdmin):
-    search_fields = ['title', 'intro', 'body']
-    list_display = ['title', 'slug', 'category', 'created_at', 'status']
-    list_filter = ['category', 'created_at', 'status']
-    inlines = [CommentItemInline]
-    prepopulated_fields = {'slug': ('title',)}
+    search_fields = ['title', 'content']
+    list_display = ['title', 'slug', 'created_at']
+    list_filter = ['tags', 'created_at']
 
-admin.site.register(Post, PostAdmin, )
+admin.site.register(Post, PostAdmin)
