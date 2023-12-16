@@ -19,11 +19,7 @@ def makeSlug(title):
 
 class Post(models.Model):
     title = models.CharField(max_length=200)
-    slug = models.GeneratedField(
-        expression = makeSlug(F('title')),
-        output_field = models.SlugField(),
-        db_persist = True,
-    )
+    slug = models.TextField()
     content = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
     modified_at = models.DateTimeField(auto_now_add = True)
