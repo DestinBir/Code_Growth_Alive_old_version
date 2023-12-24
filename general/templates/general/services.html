@@ -1,0 +1,33 @@
+{% extends 'general/base.html' %}
+
+{% load static %}
+
+{% block title %}Services{% endblock %}
+
+{% block content %}
+<main class="page service-page">
+    <section class="clean-block clean-services dark">
+        <div class="container">
+            <div class="block-heading">
+                <h2 class="text-info">Our Services</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc quam urna, dignissim nec auctor in, mattis vitae leo.</p>
+            </div>
+            <div class="row">
+                {% for service in services %}
+                <div class="col-md-6 col-lg-4">
+                    <div class="card"><img class="card-img-top w-100 d-block" src="{{ service.illustration }}">
+                        <div class="card-body">
+                            <h4 class="card-title">{{ service.title }}</h4>
+                            <p class="card-text">{{ service.description }}</p>
+                        </div>
+                        <div><button class="btn btn-outline-primary btn-sm" type="button">Learn More</button></div>
+                    </div>
+                </div>
+                {% empty %}
+                <p>This part is already in maintenance ...</p>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+</main>
+{% endblock %}

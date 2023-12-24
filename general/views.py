@@ -1,5 +1,12 @@
 from django.shortcuts import render
 
-def home(request):
+from .models import *
+
+def home_view(request):
 
     return render(request, 'general/home.html')
+
+def service_view(request):
+    services = Service.objects.all()
+
+    return render(request, 'general/services.html', {'services':services})

@@ -11,7 +11,7 @@
     <meta name="twitter:title" content="Code, Growth Alive">
     <meta property="og:type" content="website">
     <meta name="description" content="We're a startup based on new technologies of communication">
-    <meta property="og:image" content="{% static 'img/cga_non_bg_nv.png?h=bdb08c56ed708633b8225bcabdbac4f0' %}">
+    <meta property="og:image" content="{% static 'img/cga_non_bg_nv.png' %}">
     <meta name="twitter:card" content="summary_large_image">
     <script>
         (function() {
@@ -106,11 +106,11 @@
 
 <body>
     <nav class="navbar navbar-expand-lg fixed-top bg-body clean-navbar navbar-light">
-        <div class="container"><a class="navbar-brand logo" href="#">Code, Growth Alive</a><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-1"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+        <div class="container"><a class="navbar-brand logo" href="{% url 'home' %}">Code, Growth Alive</a><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-1"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navcol-1">
                 <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link active" href="index.html">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="service-page.html">Services</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="{% url 'home' %}">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'services' %}">Services</a></li>
                     <li class="nav-item"><a class="nav-link" href="features.html">Features</a></li>
                     <li class="nav-item"><a class="nav-link" href="blog-post-list.html">Blog</a></li>
                     <li class="nav-item"><a class="nav-link" href="about-us.html">About Us</a></li>
@@ -129,7 +129,7 @@
                 <div class="col-sm-3">
                     <h5>Get started</h5>
                     <ul>
-                        <li><a href="#">Home</a></li>
+                        <li><a href="{% url 'home' %}">Home</a></li>
                         <li><a href="#">Sign up</a></li>
                         <li><a href="#">Downloads</a></li>
                     </ul>
@@ -137,7 +137,7 @@
                 <div class="col-sm-3">
                     <h5>About us</h5>
                     <ul>
-                        <li><a href="#">Company Information</a></li>
+                        <li><a href="{% url 'services' %}">Services</a></li>
                         <li><a href="#">Contact us</a></li>
                         <li><a href="#">Reviews</a></li>
                     </ul>
@@ -161,13 +161,13 @@
             </div>
         </div>
         <div class="footer-copyright">
-            <p>© 2023 Copyright Text</p>
+            <p>© 2023 Copyright Code, Growth Alive</p>
         </div>
     </footer><!-- End: Footer Dark -->
-    <script src="assets/bootstrap/js/bootstrap.min.js?h=e55bde7d6e36ebf17ba0b8c1e80e4065"></script>
-    <script src="assets/js/baguetteBox.min.js?h=add865daffd8b6e10264279f48d8ac50"></script>
-    <script src="assets/js/vanilla-zoom.js?h=6a37ea9c996b05f763161c73127d66bc"></script>
-    <script src="assets/js/theme.js?h=a083aeb15550c5e1266c666e8a5846d9"></script>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/js/baguetteBox.min.js"></script>
+    <script src="assets/js/vanilla-zoom.js"></script>
+    <script src="assets/js/theme.js"></script>
 </body>
 
 </html>
