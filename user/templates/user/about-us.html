@@ -18,22 +18,19 @@
                 {% for user in users %}
                 <div class="col-sm-6 col-lg-4">
                     <div class="card text-center clean-card">
-                        <img class="card-img-top w-100 d-block" src="assets/img/avatars/avatar1.jpg?h=2bf47f2c2deaed837d2490a2db0a7175">
+                        <img class="card-img-top w-100 d-block" src="{{ user.thumbnail.url }}">
                         <div class="card-body info">
                             <h4 class="card-title">{{ user.username }}</h4>
                             <p class="card-text">{{ user.position }}</p>
                             <div class="icons">
                                 {% if user.facebook_link %}
-                                <a href="#"><i class="icon-social-facebook"></i></a>
+                                <a href="{{ user.facebook_link }}"><i class="icon-social-facebook"></i></a>
                                 {% endif %}
                                 {% if user.instagram_link %}
-                                <a href="#"><i class="icon-social-instagram"></i></a>
+                                <a href="{{ user.instagram_link }}"><i class="icon-social-instagram"></i></a>
                                 {% endif %}
                                 {% if user.twitter_link %}
-                                <a href="#"><i class="icon-social-twitter"></i></a>
-                                {% endif %}
-                                {% if user.linkedIn_link %}
-                                <a href="#"><i class="icon-social-linkedIn"></i></a>
+                                <a href="{{ user.twitter_link }}"><i class="icon-social-twitter"></i></a>
                                 {% endif %}
                             </div>
                         </div>
