@@ -9,4 +9,6 @@ urlpatterns = [
     path('admin', admin.site.urls),
     path('', home_view, name='home'),
     path('services', service_view, name='services' ),
+    path('about', about_view, name='about-us'),
+    path('contact', contact_view, name='contact-us'),
 ]
