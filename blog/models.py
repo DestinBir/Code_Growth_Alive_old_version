@@ -1,37 +1,71 @@
+from ckeditor.fields import RichTextField
 from django.db import models
-from django.db.models import F
+# from embed_video.fields import EmbedVideoField
 
 from main.settings import AUTH_USER_MODEL
 
-def makeSlug(title):
-    title = str(title)
-    n,m = title.lower().split(' '), ''
-    for x in n:
-        if x == '':
-            n.pop(n.index(x))
-    for x in range(len(n)):
-        if x != 0:
-            m = f'{m}_{n[x]}'
-        else:
-            m = n[0]
-    return m
+class Category(models.Model):
+    title = models.CharField(max_length=255)
+    slug = models.SlugField(unique=True)
+    intro = models.TextField()
+    
 
-
-class Post(models.Model):
-    title = models.CharField(max_length=200)
-    slug = models.TextField()
-    content = models.TextField()
-    created_at = models.DateTimeField(auto_now_add=True)
-    modified_at = models.DateTimeField(auto_now_add = True)
-    likes = models.IntegerField(default=0)
-    author = models.ForeignKey(AUTH_USER_MODEL, related_name='posts', on_delete=models.CASCADE)
-    tags = models.TextField()
+    class Meta:
+        ordering = ('-title',)
+        verbose_name_plural = 'categories'
 
     def __str__(self) -> str:
-        return self.title  
+        return self.title
+    
+    def get_absolute_url(self):
+        return '/%s/' % self.slug 
+
+class Post(models.Model):
+    ACTIVE = 'active'
+    DRAFT = 'draft'
+
+    CHOICES_STATUS = (
+        (ACTIVE, 'Active'),
+        (DRAFT, 'Draft')
+    )
+    
+    category = models.ForeignKey(Category, related_name='posts', on_delete=models.CASCADE, blank=True)
+    title = models.CharField(max_length=255)
+    slug = models.SlugField(blank=True, null=True)
+    intro = models.TextField()
+    body = RichTextField(blank=True, null=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+    status = models.CharField(max_length=10, choices=CHOICES_STATUS, default=DRAFT)
+    link = EmbedVideoField()
+    likes = models.IntegerField(default=0)
+    author = models.ForeignKey(AUTH_USER_MODEL, related_name='categories', on_delete=models.CASCADE)
+
+    prepopulated_fields = {'slug': ('title',)}
+
+    def __str__(self) -> str:
+        return self.title
+
+    def total_likes(self):
+        return self.likes.count()    
 
     def get_absolute_url(self):
         return '/%s/' % self.slug
     
     class Meta:
         ordering = ['-created_at']
+    
+class Comment(models.Model):
+    post = models.ForeignKey(Post, related_name='comments', on_delete=models.CASCADE)
+    name = models.CharField(max_length=255)
+    email = models.EmailField()
+    body = models.TextField()
+    created_at = models.DateTimeField(auto_now_add=True)
+    likes = models.IntegerField(default=0)
+
+
+    def __str__(self) -> str:
+        return self.name
+
+    class Meta:
+        ordering = ('-post',)
+
