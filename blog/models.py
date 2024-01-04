@@ -1,4 +1,4 @@
-from ckeditor.fields import RichTextField
+from django_ckeditor_5.fields import CKEditor5Field
 from django.db import models
 # from embed_video.fields import EmbedVideoField
 
@@ -33,10 +33,10 @@ class Post(models.Model):
     title = models.CharField(max_length=255)
     slug = models.SlugField(blank=True, null=True)
     intro = models.TextField()
-    body = RichTextField(blank=True, null=True)
+    body = CKEditor5Field('Text', config_name='extends', blank=True, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
     status = models.CharField(max_length=10, choices=CHOICES_STATUS, default=DRAFT)
-    link = EmbedVideoField()
+    link = models.URLField(blank=True, null=True)
     likes = models.IntegerField(default=0)
     author = models.ForeignKey(AUTH_USER_MODEL, related_name='categories', on_delete=models.CASCADE)
 

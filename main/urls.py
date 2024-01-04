@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.conf.urls.static import static
-from django.urls import path
+from django.urls import include, path
 
 from main import settings
 
@@ -15,5 +15,9 @@ urlpatterns = [
     path('about', about_view, name='about-us'),
     path('contact', contact_view, name='contact-us'),
     path('articles', articles, name='articles'),
-]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+]
+
+urlpatterns += [
+    path("ckeditor5/", include('django_ckeditor_5.urls'), name="ck_editor_5_upload_file"),]
++ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
