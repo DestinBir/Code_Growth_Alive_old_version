@@ -47,12 +47,12 @@ class Team(User):
 
     team = TeamManager()
 
-    thumbnail = models.ImageField(verbose_name=F('username')+'_pic', blank=True, null=True)
-    position = models.CharField(max_length=50, blank=True, null=True)
-    facebook_link = models.URLField(blank=True, null=True)
-    twitter_link = models.URLField(blank=True, null=True)
-    instagram_link = models.URLField(blank=True, null=True)
-    linkedIn_link = models.URLField(blank=True, null=True)
+    # thumbnail = models.ImageField(verbose_name=F('username')+'_pic', blank=True, null=True)
+    # position = models.CharField(max_length=50, blank=True, null=True)
+    # facebook_link = models.URLField(blank=True, null=True)
+    # twitter_link = models.URLField(blank=True, null=True)
+    # instagram_link = models.URLField(blank=True, null=True)
+    # linkedIn_link = models.URLField(blank=True, null=True)
 
     class Meta:
         proxy = True
