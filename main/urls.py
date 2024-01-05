@@ -15,9 +15,4 @@ urlpatterns = [
     path('about', about_view, name='about-us'),
     path('contact', contact_view, name='contact-us'),
     path('articles', articles, name='articles'),
-]
-
-urlpatterns += [
-    path("ckeditor5/", include('django_ckeditor_5.urls'), name="ck_editor_5_upload_file"),]
-+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
-
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

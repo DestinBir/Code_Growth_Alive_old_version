@@ -1,4 +1,4 @@
-from django_ckeditor_5.fields import CKEditor5Field
+"""from django_ckeditor_5.fields import CKEditor5Field
 from django.db import models
 # from embed_video.fields import EmbedVideoField
 
@@ -69,3 +69,4 @@ class Comment(models.Model):
     class Meta:
         ordering = ('-post',)
 
+"""

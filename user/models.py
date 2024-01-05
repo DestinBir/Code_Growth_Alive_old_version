@@ -9,8 +9,7 @@ CHOICES_STATUS = (
         ('admin', 'Admin')
     )
 
-class User(AbstractUser):
-
+"""class User(AbstractUser):
     thumbnail = models.ImageField(verbose_name=F('username')+'_pic', blank=True, null=True)
     status = models.CharField(max_length=10, choices=CHOICES_STATUS, db_default='Simple')
     position = models.CharField(max_length=50, blank=True, null=True)
@@ -18,6 +17,33 @@ class User(AbstractUser):
     twitter_link = models.URLField(blank=True, null=True)
     instagram_link = models.URLField(blank=True, null=True)
     linkedIn_link = models.URLField(blank=True, null=True)
+"""
 
+class User(AbstractUser):
+    class Role(models.TextChoices):
+        SIMPLE = 'Simple','Simple'
+        TEAM = 'Team', 'Team'
+        ADMIN = 'Admin', 'Admin'
+    
+    base_role = Role.SIMPLE
 
+    role = models.CharField(max_length=20, choices=Role.choices)
 
+    def save(self, *args, **kwargs):
+        if not self.pk:
+            self.role = self.base_role
+            return super().save(*args, **kwargs)
+
+class Team(User):
+
+    base_role = User.Role.TEAM
+
+    class Meta:
+        proxy = True
+
+class Admin(User):
+
+    base_role = User.Role.ADMIN
+
+    class Meta:
+        proxy = True

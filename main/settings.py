@@ -25,7 +25,7 @@ INSTALLED_APPS = [
     'user.apps.UserConfig',
     'general.apps.GeneralConfig',
 
-    'django_ckeditor_5',
+    # 'django_ckeditor_5',
 
 ]
 
@@ -104,7 +104,7 @@ STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static/'),]
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR/'media/'
 
-
+"""
 customColorPalette = [
       {
           'color': 'hsl(4, 90%, 58%)',
@@ -192,7 +192,8 @@ CKEDITOR_5_CONFIGS = {
       }
   }
 }
-
+"""
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
 AUTH_USER_MODEL = 'user.User'
