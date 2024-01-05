@@ -45,7 +45,7 @@ class Team(User):
 
     base_role = User.Role.TEAM
 
-    team = TeamManager
+    team = TeamManager()
 
     thumbnail = models.ImageField(verbose_name=F('username')+'_pic', blank=True, null=True)
     position = models.CharField(max_length=50, blank=True, null=True)
@@ -57,9 +57,16 @@ class Team(User):
     class Meta:
         proxy = True
 
+class AdminManager(BaseUserManager):
+    def get_queryset(self, *args, **kwargs):
+        results = super().get_queryset(*args, **kwargs)
+        return results.filter(role=User.Role.ADMIN)
+    
 class Admin(User):
 
     base_role = User.Role.ADMIN
+
+    admin = AdminManager()
 
     class Meta:
         proxy = True
