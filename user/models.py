@@ -1,6 +1,8 @@
 from django.contrib.auth.models import AbstractUser
+from django.contrib.auth.models import BaseUserManager
 from django.db import models
 from django.db.models import F
+from django.db.models.query import QuerySet
 
 CHOICES_STATUS = (
         ('simple','Simple'),
@@ -34,9 +36,23 @@ class User(AbstractUser):
             self.role = self.base_role
             return super().save(*args, **kwargs)
 
+class TeamManager(BaseUserManager):
+    def get_queryset(self, *args, **kwargs):
+        results = super().get_queryset(*args, **kwargs)
+        return results.filter(role=User.Role.TEAM)
+
 class Team(User):
 
     base_role = User.Role.TEAM
+
+    team = TeamManager
+
+    thumbnail = models.ImageField(verbose_name=F('username')+'_pic', blank=True, null=True)
+    position = models.CharField(max_length=50, blank=True, null=True)
+    facebook_link = models.URLField(blank=True, null=True)
+    twitter_link = models.URLField(blank=True, null=True)
+    instagram_link = models.URLField(blank=True, null=True)
+    linkedIn_link = models.URLField(blank=True, null=True)
 
     class Meta:
         proxy = True
