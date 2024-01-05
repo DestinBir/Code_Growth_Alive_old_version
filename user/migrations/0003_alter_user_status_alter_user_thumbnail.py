@@ -4,20 +4,30 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('user', '0002_alter_user_thumbnail'),
+        ("user", "0002_alter_user_thumbnail"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='user',
-            name='status',
-            field=models.CharField(choices=[('simple', 'Simple'), ('team', 'Team'), ('core', 'Core'), ('admin', 'Admin')], db_default=models.Value('simple'), max_length=10),
+            model_name="user",
+            name="status",
+            field=models.CharField(
+                choices=[
+                    ("simple", "Simple"),
+                    ("team", "Team"),
+                    ("core", "Core"),
+                    ("admin", "Admin"),
+                ],
+                db_default=models.Value("simple"),
+                max_length=10,
+            ),
         ),
         migrations.AlterField(
-            model_name='user',
-            name='thumbnail',
-            field=models.ImageField(blank=True, null=True, upload_to='', verbose_name=models.F('username')),
+            model_name="user",
+            name="thumbnail",
+            field=models.ImageField(
+                blank=True, null=True, upload_to="", verbose_name=models.F("username")
+            ),
         ),
     ]

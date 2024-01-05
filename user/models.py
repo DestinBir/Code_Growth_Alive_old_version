@@ -5,11 +5,11 @@ from django.db.models import F
 from django.db.models.query import QuerySet
 
 CHOICES_STATUS = (
-        ('simple','Simple'),
-        ('team', 'Team'),
-        ('core', 'Core'),
-        ('admin', 'Admin')
-    )
+    ("simple", "Simple"),
+    ("team", "Team"),
+    ("core", "Core"),
+    ("admin", "Admin"),
+)
 
 """class User(AbstractUser):
     thumbnail = models.ImageField(verbose_name=F('username')+'_pic', blank=True, null=True)
@@ -21,12 +21,13 @@ CHOICES_STATUS = (
     linkedIn_link = models.URLField(blank=True, null=True)
 """
 
+
 class User(AbstractUser):
     class Role(models.TextChoices):
-        SIMPLE = 'Simple','Simple'
-        TEAM = 'Team', 'Team'
-        ADMIN = 'Admin', 'Admin'
-    
+        SIMPLE = "Simple", "Simple"
+        TEAM = "Team", "Team"
+        ADMIN = "Admin", "Admin"
+
     base_role = Role.SIMPLE
 
     role = models.CharField(max_length=20, choices=Role.choices)
@@ -36,13 +37,14 @@ class User(AbstractUser):
             self.role = self.base_role
             return super().save(*args, **kwargs)
 
+
 class TeamManager(BaseUserManager):
     def get_queryset(self, *args, **kwargs):
         results = super().get_queryset(*args, **kwargs)
         return results.filter(role=User.Role.TEAM)
 
-class Team(User):
 
+class Team(User):
     base_role = User.Role.TEAM
 
     team = TeamManager()
@@ -57,13 +59,14 @@ class Team(User):
     class Meta:
         proxy = True
 
+
 class AdminManager(BaseUserManager):
     def get_queryset(self, *args, **kwargs):
         results = super().get_queryset(*args, **kwargs)
         return results.filter(role=User.Role.ADMIN)
-    
-class Admin(User):
 
+
+class Admin(User):
     base_role = User.Role.ADMIN
 
     admin = AdminManager()
