@@ -4,13 +4,6 @@ from django.db import models
 from django.db.models import F
 from django.db.models.query import QuerySet
 
-CHOICES_STATUS = (
-    ("simple", "Simple"),
-    ("team", "Team"),
-    ("core", "Core"),
-    ("admin", "Admin"),
-)
-
 """class User(AbstractUser):
     thumbnail = models.ImageField(verbose_name=F('username')+'_pic', blank=True, null=True)
     status = models.CharField(max_length=10, choices=CHOICES_STATUS, db_default='Simple')
@@ -20,7 +13,6 @@ CHOICES_STATUS = (
     instagram_link = models.URLField(blank=True, null=True)
     linkedIn_link = models.URLField(blank=True, null=True)
 """
-
 
 class User(AbstractUser):
     class Role(models.TextChoices):

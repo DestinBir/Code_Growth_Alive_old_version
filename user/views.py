@@ -3,6 +3,6 @@ from .models import *
 
 
 def about_view(request):
-    users = User.objects.filter(status="admin")
+    users = Admin.objects.all() 
 
     return render(request, "user/about-us.html", {"users": users})
