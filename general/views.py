@@ -1,10 +1,12 @@
 from django.shortcuts import render
+import datetime as dt
 
 from .models import *
 
 
 def home_view(request):
-    return render(request, "general/home.html")
+    year = dt.date.today().year
+    return render(request, "general/home.html", {'year': year})
 
 
 def service_view(request):
