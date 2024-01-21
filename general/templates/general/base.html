@@ -132,7 +132,6 @@
                     <li class="nav-item"><a class="nav-link" href="{% url 'services' %}">Services</a></li>
                     <li class="nav-item"><a class="nav-link" href="{% url 'articles' %}">Blog</a></li>
                     <li class="nav-item"><a class="nav-link" href="{% url 'about-us' %}">About Us</a></li>
-                    <li class="nav-item"><a class="nav-link" href="{% url 'contact-us' %}">Contact Us</a></li>
                     <li class="nav-item">
                         {% if user.is_authenticated %}
                         <a class="nav-link" href="{% url 'logout' %}">Log Out</a>
@@ -140,6 +139,9 @@
                         <a class="nav-link" href="{% url 'login' %}">Log In</a>
                         {% endif %}
                     </li>
+                    {% if user.is_authenticated %}
+                    <li class="nav-item"><a class="nav-link" href="">{{ user.username }}</a></li>
+                    {% endif %}
                 </ul>
             </div>
         </div>
