@@ -13,6 +13,7 @@ urlpatterns = [
     path("services", service_view, name="services"),
     path("contact", contact_view, name="contact-us"),
     path("articles", articles, name="articles"),
+    path("about-us", about_view, name="about-us"),
     path("login", login_user, name="login"),
     path("logout", logout_user, name="logout"),
     path("", home_view, name="home"),

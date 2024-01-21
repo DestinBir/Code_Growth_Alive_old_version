@@ -42,3 +42,7 @@ def login_user(request):
             error = "Le mot de passe ou le nom d'utilisateur est incorrect"
 
     return render(request, 'registration/login.html', {'error':error})
+
+def about_view(request):
+
+    return render(request, 'user/about-ud.html', {'users':''})
