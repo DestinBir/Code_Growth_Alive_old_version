@@ -2,15 +2,15 @@
 
 {% load static %}
 
-{% block title %}Login{% endblock %}
+{% block title %}SignUp{% endblock %}
 
 {% block content %}
 
-<main class="page login-page">
+<main class="page signin-page">
     <section class="clean-block clean-form dark">
         <div class="container">
             <div class="block-heading">
-                <h2 class="text-info">Log In</h2>
+                <h2 class="text-info">Sign Up</h2>
                 <p>Welcome on the Code, Growth Alive official site. We're happy to see you here !</p>
             </div>
             <form class="form" method="POST">
@@ -20,6 +20,18 @@
                     <input class="form-control" type="text" name="username" data-bs-theme="light">
                 </div>
                 <div class="mb-3">
+                    <label class="form-label">Email</label>
+                    <input class="form-control" type="email" name="email" data-bs-theme="light">
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">First Name</label>
+                    <input class="form-control" type="text" name="first_name" data-bs-theme="light">
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Last Name</label>
+                    <input class="form-control" type="text" name="last_name" data-bs-theme="light">
+                </div>
+                <div class="mb-3">
                     <label class="form-label">Password</label>
                     <input class="form-control" type="password" name="password" data-bs-theme="light">
                 </div>
@@ -27,9 +39,8 @@
                 <p class="text-danger">{{ error }}</p>
                 {% endif %}
                 <div class="mb3">
-                    <button class="btn btn-primary" type="submit">Log In</button>
+                    <button class="btn btn-primary" type="submit">Sign Up</button>
                 </div>
-                <a href="{% url 'signup' %}" class="text-body-emphasis">Register if new here</a>
             </form>
 
         </div>

@@ -16,5 +16,6 @@ urlpatterns = [
     path("about-us", about_view, name="about-us"),
     path("login", login_user, name="login"),
     path("logout", logout_user, name="logout"),
+    path("signup", signup, name="signup"),
     path("", home_view, name="home"),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
