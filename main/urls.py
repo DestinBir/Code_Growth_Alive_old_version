@@ -10,11 +10,10 @@ from user.views import *
 
 urlpatterns = [
     path("admin", admin.site.urls),
-    path("", home_view, name="home"),
     path("services", service_view, name="services"),
-    path("about", about_view, name="about-us"),
     path("contact", contact_view, name="contact-us"),
     path("articles", articles, name="articles"),
     path("login", login_user, name="login"),
     path("logout", logout_user, name="logout"),
+    path("", home_view, name="home"),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
