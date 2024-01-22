@@ -13,6 +13,7 @@ class Article(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     likes = models.IntegerField(default=0)
     author = models.ForeignKey(AUTH_USER_MODEL, related_name='article', on_delete=models.CASCADE)
+    picture = models.ImageField(blank=True, null=True, upload_to='articles')
 
 
     prepopulated_fields = {'slug': ('title',)}
