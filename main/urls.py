@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.conf.urls.static import static
-from django.urls import include, path
+from django.urls import include, path, url
 
 from main import settings
 
@@ -17,5 +17,6 @@ urlpatterns = [
     path("login", login_user, name="login"),
     path("logout", logout_user, name="logout"),
     path("signup", signup, name="signup"),
+    
     path("", home_view, name="home"),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
