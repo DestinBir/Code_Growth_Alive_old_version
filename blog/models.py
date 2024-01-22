@@ -7,6 +7,7 @@ from main.settings import AUTH_USER_MODEL
 class Article(models.Model):
     language = models.CharField(max_length=50)
     title = models.CharField(max_length=255)
+    tag = models.CharField(max_length=500)
     slug = models.SlugField(blank=True, null=True)
     content = MDTextField()
     created_at = models.DateTimeField(auto_now_add=True)
@@ -26,7 +27,7 @@ class Article(models.Model):
         return '/%s/' % self.slug
     
 class Comment(models.Model):
-    post = models.ForeignKey(Post, related_name='comments', on_delete=models.CASCADE)
+    post = models.ForeignKey(Article, related_name='comments', on_delete=models.CASCADE)
     name = models.CharField(max_length=255)
     email = models.EmailField()
     body = models.TextField()
