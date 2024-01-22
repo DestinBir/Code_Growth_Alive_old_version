@@ -6,4 +6,6 @@ from .models import *
 # @login_required
 
 def articles(request):
-    return render(request, "blog/articles.html")
+    articles = Article.objects.all()
+    
+    return render(request, "blog/articles.html", {'arts':articles})
