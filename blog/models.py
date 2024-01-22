@@ -5,7 +5,13 @@ from django.db import models
 from main.settings import AUTH_USER_MODEL
 
 class Article(models.Model):
-    language = models.CharField(max_length=50)
+    class Lang(models.TextChoices):
+        FR = "Fr", "Fr"
+        EN = "En", "En"
+
+    lang_role = Lang.FR
+
+    language = models.CharField(max_length=20, choices=Lang.choices)
     title = models.CharField(max_length=255)
     tag = models.CharField(max_length=500)
     slug = models.SlugField(blank=True, null=True)
