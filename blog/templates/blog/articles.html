@@ -15,22 +15,21 @@
                 <p>Our commitment extends beyond merely providing technological solutions; we are dedicated to nurturing individuals' minds through computer knowledge courses.</p>
             </div>
             <div class="block-content">
-
-                
+            {% for art in arts %}
                 <div class="clean-blog-post">
                     <div class="row">
-                        <div class="col-lg-5"><img class="rounded img-fluid" src="assets/img/tech/image4.jpg?h=0adc0de9a17a7caea6b8641f5d6ae02c"></div>
+                        <div class="col-lg-5"><img class="rounded img-fluid" src="{{ art.picture.url }}"></div>
                         <div class="col-lg-7">
-                            <h3>Lorem Ipsum dolor sit amet</h3>
+                            <h3>{{ art.title }}</h3>
                             <div class="info">
-                                <span class="text-muted">Jan 16, 2018 by&nbsp;<a href="#">John Smith</a></span>
+                                <span class="text-muted">{{ art.created_at }} by&nbsp;<a href="#">{{ art.author.username }}</a></span>
                             </div>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc quam urna, dignissim nec auctor in, mattis vitae leo. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc quam urna, dignissim nec auctor in, mattis vitae leo.</p>
+                            <p>{{ art.content|truncatechars:280 }}</p>
                             <button class="btn btn-outline-primary btn-sm" type="button">Read More</button>
                         </div>
                     </div>
                 </div>
-
+            {% endfor %}
 
             </div>
         </div>
