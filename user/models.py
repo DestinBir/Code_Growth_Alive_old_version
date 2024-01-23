@@ -31,16 +31,23 @@ class User(AbstractUser):
     instagram_link = models.URLField(blank=True, null=True)
     linkedIn_link = models.URLField(blank=True, null=True)
 
-
+'''
     def save(self, *args, **kwargs):
         if not self.pk:
             self.role = self.base_role
             return super().save(*args, **kwargs)
 
 
+class TeamManager(BaseUserManager):
+    def get_queryset(self, *args, **kwargs):
+        results = super().get_queryset(*args, **kwargs)
+        return results.filter(role=User.Role.TEAM)
+
 
 class Team(User):
     base_role = User.Role.TEAM
+
+
 
     class Meta:
         proxy = True
@@ -51,3 +58,4 @@ class Admin(User):
 
     class Meta:
         proxy = True
+'''

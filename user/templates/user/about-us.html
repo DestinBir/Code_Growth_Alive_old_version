@@ -18,7 +18,7 @@
                 {% for user in users %}
                 <div class="col-sm-6 col-lg-4">
                     <div class="card text-center clean-card">
-                        <img class="card-img-top w-100 d-block" src="{{im user.thumbnail.url }}">
+                        <img class="card-img-top w-100 d-block" src="{{user.thumbnail.url }}">
                         <div class="card-body info">
                             <h4 class="card-title">{{ user.username }}</h4>
                             <p class="card-text">{{ user.position }}</p>
@@ -31,6 +31,9 @@
                                 {% endif %}
                                 {% if user.twitter_link %}
                                 <a href="{{ user.twitter_link }}"><i class="icon-social-twitter"></i></a>
+                                {% endif %}
+                                {% if user.linkedIn_link %}
+                                <a href="{{ user.linkedIn_link }}"><i class="icon-social-linkedin"></i></a>
                                 {% endif %}
                             </div>
                         </div>
