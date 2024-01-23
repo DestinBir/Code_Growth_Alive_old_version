@@ -24,7 +24,7 @@ class User(AbstractUser):
 
     role = models.CharField(max_length=20, choices=Role.choices)
 
-    thumbnail = models.ImageField(verbose_name=F('username')+'_pic', blank=True, null=True, upload_to='users')
+    thumbnail = models.ImageField(blank=True, null=True, upload_to='users')
     position = models.CharField(max_length=50, blank=True, null=True)
     facebook_link = models.URLField(blank=True, null=True)
     twitter_link = models.URLField(blank=True, null=True)

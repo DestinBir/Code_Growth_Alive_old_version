@@ -47,4 +47,4 @@ def about_view(request):
 
     users = User.objects.filter(role='Team')
 
-    return render(request, 'user/about-us.html', {'users':'users'})
+    return render(request, 'user/about-us.html', {'users':users})
