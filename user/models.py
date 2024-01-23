@@ -38,31 +38,16 @@ class User(AbstractUser):
             return super().save(*args, **kwargs)
 
 
-class TeamManager(BaseUserManager):
-    def get_queryset(self, *args, **kwargs):
-        results = super().get_queryset(*args, **kwargs)
-        return results.filter(role=User.Role.TEAM)
-
 
 class Team(User):
     base_role = User.Role.TEAM
-
-    team = TeamManager()
 
     class Meta:
         proxy = True
 
 
-class AdminManager(BaseUserManager):
-    def get_queryset(self, *args, **kwargs):
-        results = super().get_queryset(*args, **kwargs)
-        return results.filter(role=User.Role.ADMIN)
-
-
 class Admin(User):
     base_role = User.Role.ADMIN
-
-    admin = AdminManager()
 
     class Meta:
         proxy = True
