@@ -45,4 +45,4 @@ def login_user(request):
 
 def about_view(request):
 
-    return render(request, 'user/about-ud.html', {'users':''})
+    return render(request, 'user/about-us.html', {'users':''})

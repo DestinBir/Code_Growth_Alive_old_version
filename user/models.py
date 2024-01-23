@@ -24,6 +24,14 @@ class User(AbstractUser):
 
     role = models.CharField(max_length=20, choices=Role.choices)
 
+    thumbnail = models.ImageField(verbose_name=F('username')+'_pic', blank=True, null=True, upload_to='users')
+    position = models.CharField(max_length=50, blank=True, null=True)
+    facebook_link = models.URLField(blank=True, null=True)
+    twitter_link = models.URLField(blank=True, null=True)
+    instagram_link = models.URLField(blank=True, null=True)
+    linkedIn_link = models.URLField(blank=True, null=True)
+
+
     def save(self, *args, **kwargs):
         if not self.pk:
             self.role = self.base_role
@@ -40,13 +48,6 @@ class Team(User):
     base_role = User.Role.TEAM
 
     team = TeamManager()
-
-    # thumbnail = models.ImageField(verbose_name=F('username')+'_pic', blank=True, null=True)
-    # position = models.CharField(max_length=50, blank=True, null=True)
-    # facebook_link = models.URLField(blank=True, null=True)
-    # twitter_link = models.URLField(blank=True, null=True)
-    # instagram_link = models.URLField(blank=True, null=True)
-    # linkedIn_link = models.URLField(blank=True, null=True)
 
     class Meta:
         proxy = True
