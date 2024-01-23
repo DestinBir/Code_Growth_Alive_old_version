@@ -18,7 +18,7 @@
                 {% for user in users %}
                 <div class="col-sm-6 col-lg-4">
                     <div class="card text-center clean-card">
-                        <img class="card-img-top w-100 d-block" src="{{ user.thumbnail.url }}" style="height: 223px !important; width: 334px !important;">
+                        <img class="card-img-top w-100 d-block" src="{{ user.thumbnail.url }}">
                         <div class="card-body info">
                             <h4 class="card-title">{{ user.username }}</h4>
                             <p class="card-text">{{ user.position }}</p>
