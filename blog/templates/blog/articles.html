@@ -25,7 +25,7 @@
                                 <span class="text-muted">{{ art.created_at | date:"jS F Y" }} by&nbsp;<a href="#">{{ art.author.username }}</a></span>
                             </div>
                             <p>{{ art.content|truncatechars:280 }}</p>
-                            <button class="btn btn-outline-primary btn-sm" type="button">Read More</button>
+                            <a href="{% url 'article' art.id %}"><button class="btn btn-outline-primary btn-sm" type="button">Read More</button></a>
                         </div>
                     </div>
                 </div>
