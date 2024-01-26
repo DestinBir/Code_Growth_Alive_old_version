@@ -47,7 +47,12 @@ MIDDLEWARE = [
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
 
+
 ROOT_URLCONF = "main.urls"
+
+LOCALE_PATHS = [
+    BASE_DIR / 'locale/',
+]
 
 TEMPLATES = [
     {
