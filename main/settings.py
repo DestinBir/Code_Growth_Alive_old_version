@@ -80,6 +80,17 @@ DATABASES = {
     }
 }
 
+# adding a redis cache system
+
+CACHES = {
+    "default":{
+        "BACKEND": "django_redis.cache.RedisCache",
+        "LOCATION": "redis://0.0.0.0:6379/",
+        "OPTION": {
+            "CLIENT_CLASS": "django_redis.client.DefaultClient"
+        },
+    }
+}
 
 AUTH_PASSWORD_VALIDATORS = [
     {
