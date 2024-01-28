@@ -46,6 +46,5 @@ def login_user(request):
 def about_view(request):
 
     users = User.objects.filter(role='Team')
-    print(users)
 
     return render(request, 'user/about-us.html', {'users':users})
