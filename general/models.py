@@ -41,6 +41,6 @@ class Price(models.Model):
     description = models.CharField(max_length=100)
     amount = models.IntegerField()
     duration = models.IntegerField()
-    limited = models.BooleanField(db_default=True)
+    limited = models.BooleanField(default=True)
     number = models.IntegerField()
     service = models.ForeignKey(Service, related_name="price", on_delete=models.CASCADE)
