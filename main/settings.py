@@ -13,10 +13,12 @@ LANGUAGES = (
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
-SECRET_KEY = "django-insecure-#s+woex0_%ba=6u05xp0bj@%bu^9ndt1ou&a5=02)*#pm)zf96"
+with open(os.path.join(BASE_DIR, 'secret_key.txt')) as f:
+    SECRET_KEY = f.read().strip()
 
+
+# SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
-
 ALLOWED_HOSTS = ['*']
 
 
