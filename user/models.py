@@ -19,10 +19,12 @@ class User(AbstractUser):
         SIMPLE = "Simple", "Simple"
         TEAM = "Team", "Team"
         ADMIN = "Admin", "Admin"
+        CA = "CA", "CA"
+        COMPT = "COMPT", "COMPT"
 
     base_role = Role.SIMPLE
 
-    role = models.CharField(max_length=20, choices=Role.choices)
+    role = models.CharField(max_length=20, choices=Role.choices, default=base_role)
 
     thumbnail = models.ImageField(blank=True, null=True, upload_to='users')
     position = models.CharField(max_length=50, blank=True, null=True)

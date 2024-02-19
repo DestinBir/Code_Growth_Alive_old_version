@@ -14,12 +14,12 @@
             </div>
             <div style="display: flex;">
                 {% if user.thumbnail %}
-                <img style="height: 200px; width: 200px; border-radius: 100%;" src="{{user.thumbnail.url }}">
+                <img style="height: 150px; width: 150px; border-radius: 100%;" src="{{user.thumbnail.url }}">
                 {% endif %}
-                <div class="row">
+                <div style="padding-left: 15px;">
                     <br>
-                    <h3>{{ user.firstname }} {{ user.username }}</h3>
-                    <h2>{{ user.email }}</h2>
+                    <h3>{{ user.lastname }} {{ user.username }}</h3>
+                    <p>{{ user.email }}</p>
                     <p class="text-success">{{ user.position }}</p>
                 </div>
             </div>
