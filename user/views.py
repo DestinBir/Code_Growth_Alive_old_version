@@ -48,5 +48,8 @@ def about_view(request):
     return render(request, 'user/about-us.html', {'users':users})
 
 def user_view(request, id):
+
     user = User.objects.get(id==id)
+
     return render(request, 'user/user.html', {'user':user})
+
