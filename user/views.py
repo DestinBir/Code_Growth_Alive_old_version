@@ -43,7 +43,7 @@ def login_user(request):
 
 def about_view(request):
 
-    users = User.objects.filter(role='Team')
+    users = list([User.objects.filter(role='CA'),User.objects.filter(role='Compt'),User.objects.filter(role='Team')])
 
     return render(request, 'user/about-us.html', {'users':users})
 

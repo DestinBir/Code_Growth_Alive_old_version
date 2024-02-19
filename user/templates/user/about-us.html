@@ -15,8 +15,9 @@
                 <p>Smiles, devotion, love, and sharing are the pillars that make our team more than just a family.</p>
             </div>
             <div class="row justify-content-center">
-                {% for user in users %}
-                <div class="col-sm-6 col-lg-4">
+                {% for list in users %}
+                    {% for user in list %}
+                        <div class="col-sm-6 col-lg-4">
                     <div class="card text-center clean-card">
                         <img class="card-img-top w-100 d-block" src="{{user.thumbnail.url }}">
                         <div class="card-body info">
@@ -38,7 +39,8 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                        </div>
+                    {% endfor %}
                 {% endfor %}
             </div>
             <div class="justify-content-center">

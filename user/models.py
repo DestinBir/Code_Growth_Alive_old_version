@@ -20,7 +20,7 @@ class User(AbstractUser):
         TEAM = "Team", "Team"
         ADMIN = "Admin", "Admin"
         CA = "CA", "CA"
-        COMPT = "COMPT", "COMPT"
+        COMPT = "Compt", "Compt"
 
     base_role = Role.SIMPLE
 
