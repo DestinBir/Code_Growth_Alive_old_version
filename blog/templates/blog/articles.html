@@ -14,24 +14,28 @@
                 <h2 class="text-info">Our Blog</h2>
                 <p>Our commitment extends beyond merely providing technological solutions; we are dedicated to nurturing individuals' minds through computer knowledge courses.</p>
             </div>
-            <div class="block-content">
-            {% for art in arts %}
-                <div class="clean-blog-post">
-                    <div class="row">
-                        <div class="col-lg-5"><img class="rounded img-fluid" src="{{ art.picture.url }}"></div>
-                        <div class="col-lg-7">
-                            <h3>{{ art.title }}</h3>
-                            <div class="info">
-                                <span class="text-muted">{{ art.created_at | date:"jS F Y" }} by&nbsp;<a href="#">{{ art.author.username }}</a></span>
+            {% if arts %}
+                <div class="block-content">
+                    {% for art in arts %}
+                        <div class="clean-blog-post">
+                            <div class="row">
+                                <div class="col-lg-5"><img class="rounded img-fluid" src="{{ art.picture.url }}"></div>
+                                <div class="col-lg-7">
+                                    <h3>{{ art.title }}</h3>
+                                    <div class="info">
+                                        <span class="text-muted">{{ art.created_at | date:"jS F Y" }} by&nbsp;<a href="#">{{ art.author.username }}</a></span>
+                                    </div>
+                                    <p>{{ art.content|truncatechars:280 }}</p>
+                                    <a href="{% url 'article' art.id %}"><button class="btn btn-outline-primary btn-sm" type="button">Read More</button></a>
+                                </div>
                             </div>
-                            <p>{{ art.content|truncatechars:280 }}</p>
-                            <a href="{% url 'article' art.id %}"><button class="btn btn-outline-primary btn-sm" type="button">Read More</button></a>
                         </div>
-                    </div>
+                    {% endfor %}
                 </div>
-            {% endfor %}
+            {% else %}
+                <p class="text-center">This part is already in maintenance ...</p>
+            {% endif %}
 
-            </div>
         </div>
     </section>
 </main>

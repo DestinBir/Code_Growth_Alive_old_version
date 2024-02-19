@@ -81,11 +81,10 @@ DATABASES = {
         "NAME": BASE_DIR / "db.sqlite3",
     }
 }
-'''
 
 # To use Neon with Django, you have to create a Project on Neon and specify the project connection settings in your settings.py in the same way as for standalone Postgres.
 
-DATABASES = {
+'''DATABASES = {
   'default': {
     'ENGINE': 'django.db.backends.postgresql',
     'NAME': 'neondb',
@@ -95,8 +94,7 @@ DATABASES = {
     'PORT': '5432',
     'OPTIONS': {'sslmode': 'require'},
   }
-} 
-'''
+}'''
 
 # adding a redis cache system
 
@@ -141,9 +139,11 @@ USE_TZ = True
 
 
 # STATICFILES_DIRS = os.path.join(BASE_DIR, 'static'),
-STATIC_URL = '/static/' 
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-STATICFILES_DIRS = ( os.path.join(BASE_DIR, 'static‌'), )
+STATIC_URL = "static/"
+STATIC_ROOT = os.path.join(BASE_DIR, "")
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, "static/"),
+]
 
 
 MEDIA_URL = "/media/"
