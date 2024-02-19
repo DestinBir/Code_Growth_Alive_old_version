@@ -23,7 +23,7 @@
                                 <div class="col-lg-7">
                                     <h3>{{ art.title }}</h3>
                                     <div class="info">
-                                        <span class="text-muted">{{ art.created_at | date:"jS F Y" }} by&nbsp;<a href="#">{{ art.author.username }}</a></span>
+                                        <span class="text-muted">{{ art.created_at | date:"jS F Y" }} by&nbsp;<a href="{% url 'user' art.author.id %}">{{ art.author.username }}</a></span>
                                     </div>
                                     <p>{{ art.content|truncatechars:280 }}</p>
                                     <a href="{% url 'article' art.id %}"><button class="btn btn-outline-primary btn-sm" type="button">Read More</button></a>

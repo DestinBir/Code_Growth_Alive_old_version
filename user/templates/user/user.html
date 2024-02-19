@@ -1,9 +1,27 @@
+{% extends 'general/base.html' %}
+
+{% load static %}
+
+{% block title %}{{ user.username }}{% endblock %}
+
+{% block content %}
 <main class="page service-page">
     <section class="clean-block clean-services dark">
         <div class="container">
             <div class="block-heading">
-                <h2 class="text-info">Our Services</h2>
-                <p>We operate in almost every field, delivering quality services that are suitable and, above all, meet all your requirements.</p>
+                <h2 class="text-info">Personal Page</h2>
+                
+            </div>
+            <div style="display: flex;">
+                {% if user.thumbnail %}
+                <img style="height: 200px; width: 200px; border-radius: 100%;" src="{{user.thumbnail.url }}">
+                {% endif %}
+                <div class="row">
+                    <br>
+                    <h3>{{ user.firstname }} {{ user.username }}</h3>
+                    <h2>{{ user.email }}</h2>
+                    <p class="text-success">{{ user.position }}</p>
+                </div>
             </div>
             <div class="row">
                 {% for service in services %}
@@ -23,3 +41,4 @@
         </div>
     </section>
 </main>
+{% endblock %}
