@@ -128,7 +128,7 @@
                                 </svg>Auto</a></div>
                             </div>
                     </li>
-                    <li class="nav-item"><a class="nav-link active" href="{% url 'home' %}">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'home' %}">Home</a></li>
                     <li class="nav-item"><a class="nav-link" href="{% url 'services' %}">Services</a></li>
                     <li class="nav-item"><a class="nav-link" href="{% url 'articles' %}">Blog</a></li>
                     <li class="nav-item"><a class="nav-link" href="{% url 'about-us' %}">About Us</a></li>
@@ -140,7 +140,7 @@
                         {% endif %}
                     </li>
                     {% if user.is_authenticated %}
-                    <li class="nav-item"><a class="nav-link" href="">{{ user.username }}</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'user' user.id %}">{{ user.username }}</a></li>
                     {% endif %}
                 </ul>
             </div>
