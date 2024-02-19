@@ -23,11 +23,9 @@ def signup(request):
 
     return render(request, 'registration/signup.html', {'error':error})
 
-
 def logout_user(request):
     logout(request)
     return redirect("home")
-
 
 def login_user(request):
     error = ''
@@ -48,3 +46,7 @@ def about_view(request):
     users = User.objects.filter(role='Team')
 
     return render(request, 'user/about-us.html', {'users':users})
+
+def user_view(request, id):
+    user = User.objects.get(id==id)
+    return render(request, 'user/user.html', {'user':user})

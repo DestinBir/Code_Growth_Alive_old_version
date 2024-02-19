@@ -1,0 +1,25 @@
+<main class="page service-page">
+    <section class="clean-block clean-services dark">
+        <div class="container">
+            <div class="block-heading">
+                <h2 class="text-info">Our Services</h2>
+                <p>We operate in almost every field, delivering quality services that are suitable and, above all, meet all your requirements.</p>
+            </div>
+            <div class="row">
+                {% for service in services %}
+                <div class="col-md-6 col-lg-4">
+                    <div class="card"><img class="card-img-top w-100 d-block" src="{{ service.illustration }}">
+                        <div class="card-body">
+                            <h4 class="card-title">{{ service.title }}</h4>
+                            <p class="card-text">{{ service.description }}</p>
+                        </div>
+                        <div><button class="btn btn-outline-primary btn-sm" type="button">Learn More</button></div>
+                    </div>
+                </div>
+                {% empty %}
+                <p class="text-center">This part is already in maintenance ...</p>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+</main>
