@@ -2,8 +2,6 @@ from django.db import models
 
 from main.settings import AUTH_USER_MODEL
 
-STATUS = (("basic", "BASIC"), ("premium", "PREMIUM"), ("pro", "PRO"))
-
 
 class Service(models.Model):
     title = models.CharField(max_length=50)
@@ -34,13 +32,5 @@ class FeedBack(models.Model):
 
     class Meta:
         ordering = ["-message"]
+    
 
-
-class Price(models.Model):
-    status = models.CharField(max_length=50, choices=STATUS)
-    description = models.CharField(max_length=100)
-    amount = models.IntegerField()
-    duration = models.IntegerField()
-    limited = models.BooleanField(default=True)
-    number = models.IntegerField()
-    service = models.ForeignKey(Service, related_name="price", on_delete=models.CASCADE)

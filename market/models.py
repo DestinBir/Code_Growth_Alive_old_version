@@ -5,10 +5,26 @@ from django.utils import timezone
 from main.settings import AUTH_USER_MODEL
 
 
+class Price(models.Model):
+    class Statut(models.TextChoices):
+        BASIC = "Basic", "Basic", 
+        PREMIUM = "Premium", "Premium",
+        PRO = "Pro", "Pro"
+    
+    base_status = Statut.BASIC
+    name = models.CharField(max_length=150)
+    status = models.CharField(max_length=50, choices=Statut, default=base_status)
+    description = models.CharField(max_length=100)
+    amount = models.FloatField(default=0.0)
+
+    def __str__(self):
+        return self.name
+
+
 class Product(models.Model):
     name = models.CharField(max_length=128)
     slug = models.SlugField(max_length=128)
-    price = models.FloatField(default=0.0)
+    price = models.ForeignKey(Price, related_name='products', on_delete=models.SET_NULL, blank=True, null=True)
     stock = models.IntegerField(default=0)
     description = models.TextField(blank=True)
     thumbnail = models.ImageField(upload_to="products", blank=True, null=True)
@@ -46,3 +62,4 @@ class Cart(models.Model):
 
         self.orders.clear()
         super().delete(*args, **kwargs)
+
