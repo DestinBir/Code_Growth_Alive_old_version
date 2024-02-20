@@ -8,12 +8,12 @@ from .models import Product, Cart, Order
 def index(request):
     products = Product.objects.all()
 
-    return render(request, 'store/index.html', context={'products': products})
+    return render(request, 'market/index.html', context={'products': products})
 
 
 def product_detail(request, slug):
     product = get_object_or_404(Product, slug=slug)
-    return render(request, 'store/detail.html', context={"product": product})
+    return render(request, 'market/detail.html', context={"product": product})
 
 
 def add_to_cart(request, slug):
@@ -39,7 +39,7 @@ def add_to_cart(request, slug):
 def cart(request):
     cart = get_object_or_404(Cart, user=request.user)
 
-    return render(request, 'store/cart.html', context={'orders': cart.orders.all()})
+    return render(request, 'market/cart.html', context={'orders': cart.orders.all()})
 
 
 def delete_cart(request):
