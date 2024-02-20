@@ -14,7 +14,7 @@
                 <div class="post-image" style="background-image: url({{art.picture.url}});"></div>
                 <div class="post-body">
                     <h3>{{ art.title }}</h3>
-                    <div class="post-info"><span>By {{ art.author.username }}</span><span>{{ art.created_at | date:"jS F Y" }}</span></div>
+                    <div class="post-info"><a href="{% url 'user' art.author.id %}" style="text-decoration-line: none;"><span>By {{ art.author.username }}</span></a><span>, {{ art.created_at | date:"jS F Y" }}</span></div>
                     <p>{{ art.content }}</p>
                 </div>
             </div>

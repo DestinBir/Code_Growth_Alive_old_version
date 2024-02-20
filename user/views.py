@@ -3,6 +3,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import get_user_model, login, logout, authenticate
 
 from .models import *
+from blog.models import *
 
 User = get_user_model()
 
@@ -48,8 +49,11 @@ def about_view(request):
     return render(request, 'user/about-us.html', {'users':users})
 
 def user_view(request, id):
-
+    perm = False
     user = User.objects.get(id=id)
+    #if request.User and request.User.username == user.username:
+    #    perm = True
+    posts = Article.objects.filter(author=user)
 
-    return render(request, 'user/user.html', {'user':user})
+    return render(request, 'user/user.html', {'pers':user, 'posts':posts})
 

@@ -32,6 +32,7 @@ INSTALLED_APPS = [
     "blog.apps.BlogConfig",
     "user.apps.UserConfig",
     "general.apps.GeneralConfig",
+    "market.apps.MarketConfing",
     # 'django_ckeditor_5',
     'mdeditor',
 ]
@@ -153,7 +154,6 @@ MEDIA_ROOT = os.path.join(BASE_DIR, "media/")
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 AUTH_USER_MODEL = "user.User"
-
 
 
 MDEDITOR_CONFIGS = {
