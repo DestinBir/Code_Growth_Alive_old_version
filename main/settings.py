@@ -32,7 +32,7 @@ INSTALLED_APPS = [
     "blog.apps.BlogConfig",
     "user.apps.UserConfig",
     "general.apps.GeneralConfig",
-    "market.apps.MarketConfing",
+    "market.apps.MarketConfig",
     # 'django_ckeditor_5',
     'mdeditor',
 ]
