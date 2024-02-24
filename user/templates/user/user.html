@@ -11,6 +11,107 @@
             <div class="block-heading">
                 <h2 class="text-info">Personal Page</h2>
             </div>
+            {% if user.is_authenticated == False %} 
+            {% if user.username != pers.username %}
+            <div class="row align-items-center flex-row">
+                <div class="col-lg-6">
+                    <div class="about-avatar">
+                        <img class="rounded-circle" style="height: 320px; width: 320px;" src="{{ pers.thumbnail.url }}">
+                    </div>
+                </div>
+
+                <div class="col-lg-6">
+                    <div class="about-text go-to">
+                        <h3>{{ pers.username }}</h3>
+                        <h6>{{ pers.email }}</h6>
+                        <p class="text-success">{{ pers.position }}</p>
+                        
+                    </div>
+                </div>
+            </div>
+            {% endif %}   
+            {% endif %}
+            <!--<div class="row align-items-center flex-row">
+                <div class="col-lg-6">
+                    <div class="about-avatar">
+                        <img class="rounded-circle" style="height: 320px; width: 320px;" src="{{ pers.thumbnail.url }}">
+                    </div>
+                </div>
+
+                <div class="col-lg-6">
+                    <div class="about-text go-to">
+                        <h3>{{ pers.username }}</h3>
+                        <h6>{{ pers.email }}</h6>
+                        <p class="text-success">{{ pers.position }}</p>
+                        {% if user.is_authenticated %}
+                        {% if user.username == pers.username %}
+                        <div class="row about-list">
+                            <div class="col-md-6">
+                                {% if user.role == 'CA' or 'Team' %}
+                                <div class="media">
+                                    <button class="btn btn-outline-primary btn-sm" type="button">Nouveau Post</button>
+                                    <br><br>
+                                </div>
+                                {% endif %}
+                                {% if user.role == 'Compt' %}
+                                <div class="media">
+                                    <button class="btn btn-outline-primary btn-sm" type="button">Faire un Rapport</button>
+                                    <br><br>
+                                </div>
+                                {% endif %}
+                                {% if user.role == 'CA' and 'Admin' %}
+                                <div class="media">
+                                    <button class="btn btn-outline-primary btn-sm" type="button">Voir les rapports</button>
+                                    <br><br>
+                                </div>
+                                {% endif %}
+                            </div>
+                            <div class="col-md-6">
+                                <div class="media">
+                                    <label>E-mail</label>
+                                    <p>info@domain.com</p>
+                                </div>
+                                <div class="media">
+                                    <label>Phone</label>
+                                    <p>820-885-3321</p>
+                                </div>
+                                <div class="media">
+                                    <label>Skype</label>
+                                    <p>skype.0404</p>
+                                </div>
+                                <div class="media">
+                                    <label>Freelance</label>
+                                    <p>Available</p>
+                                </div>
+                            </div>
+                        </div>
+                        {% endif %}
+                        {% endif %}
+                        {% if user.is_authenticated %} 
+                        {% if user.username != pers.username %}
+                        <div class="row about-list">
+                            <div class="card">
+                                <h2 class="card-head">
+                                    Voila
+                                </h2>
+                            </div>
+                        </div>
+                        {% endif %}   
+                        {% endif %}
+                        {% if user.is_authenticated == False %} 
+                        {% if user.username != pers.username %}
+                        <div class="row about-list">
+                            <div>
+                                <h4 class="title">Title</h4>
+                                <h6>Text descrption</h6>
+                                <button class="btn btn-outline-primary btn-sm" type="button">Learn More</button>
+                            </div>
+                        </div>
+                        {% endif %}   
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
             <div class="row align-items-center flex-row">
                 <div class="col-lg-6">
                     <div class="about-avatar">
@@ -46,7 +147,7 @@
                                 </div>
                                 {% endif %}
                             </div>
-                            <!--<div class="col-md-6">
+                            <div class="col-md-6">
                                 <div class="media">
                                     <label>E-mail</label>
                                     <p>info@domain.com</p>
@@ -63,7 +164,7 @@
                                     <label>Freelance</label>
                                     <p>Available</p>
                                 </div>
-                            </div>-->
+                            </div>
                         </div>
                         {% endif %}
                         {% endif %}
@@ -92,7 +193,7 @@
                     </div>
                 </div>
             </div>
-            <!--<div class="counter">
+            <div class="counter">
                 <div class="row">
                     <div class="col-6 col-lg-3">
                         <div class="count-data text-center">
@@ -127,9 +228,11 @@
                 <p class="card-text">{{ post.content|truncatechars:150 }}</p>
               </div>
               <div>
-                <a href="{% url 'article' post.id %}"><button class="btn btn-outline-warning btn-sm ms-3" type="button">Read More</button></a>
+                {% if user.is_authenticated and user.username == pers.username %}
                 <a href="{% url 'article' post.id %}"><button class="btn btn-outline-primary btn-sm ms-3" type="button">Modify</button></a>
-                <button class="btn btn-outline-danger btn-sm ms-3" type="button" data-bs-toggle="popover" title="Popover Header" data-bs-content="Some content inside the popover">Delete</button>
+                <a href="{% url 'article' post.id %}"><button class="btn btn-outline-danger btn-sm ms-3" type='button'>Delete</button></a>
+                {% endif %}
+                <a href="{% url 'article' post.id %}"><button class="btn btn-outline-warning btn-sm ms-3" type="button">Read More</button></a>
             </div>
             </div>
             {% endfor %}
