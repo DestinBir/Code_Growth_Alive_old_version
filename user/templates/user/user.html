@@ -11,6 +11,14 @@
             <div class="block-heading">
                 <h2 class="text-info">Personal Page</h2>
             </div>
+            {% if user.is_authenticated and user.username == pers.username %}
+            
+            {% elif user.is_authenticated and user.username != pers.username %}
+
+            {% else %}
+
+            {% endif %}
+
             {% if user.is_authenticated == False %} 
             {% if user.username != pers.username %}
             <div class="row align-items-center flex-row">
