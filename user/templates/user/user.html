@@ -28,7 +28,7 @@
                             <div class="col-md-6">
                                 {% if user.role == 'CA' or 'Team' %}
                                 <div class="media">
-                                    <button class="btn btn-outline-primary btn-sm" type="button">Nouveau Post</button>
+                                    <a href="{% url 'create_article' %}"><button class="btn btn-outline-primary btn-sm" type="button">Nouveau Post</button></a>
                                     <br><br>
                                 </div>
                                 {% endif %}
@@ -129,8 +129,8 @@
               </div>
               <div>
                 {% if user.is_authenticated and user.username == pers.username %}
-                <a href="{% url 'article' post.id %}"><button class="btn btn-outline-primary btn-sm ms-3" type="button">Modify</button></a>
-                <a href="{% url 'article' post.id %}"><button class="btn btn-outline-danger btn-sm ms-3" type='button'>Delete</button></a>
+                <a href="{% url 'edit_article' post.id %}"><button class="btn btn-outline-primary btn-sm ms-3" type="button">Modify</button></a>
+                <a href="{% url 'delete_article' post.id %}"><button class="btn btn-outline-danger btn-sm ms-3" type='button'>Delete</button></a>
                 {% endif %}
                 <a href="{% url 'article' post.id %}"><button class="btn btn-outline-warning btn-sm ms-3" type="button">Read More</button></a>
             </div>

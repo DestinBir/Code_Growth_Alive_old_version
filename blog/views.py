@@ -30,7 +30,7 @@ def liker(request, id):
     return redirect('Article_detail', id=id)
 
 @login_required
-def delete(request, id, user):
+def delete_article(request, id, user):
     Article = Article.objects.get(id=id)
     Article.delete()
     return render(request, 'core/user.html', {'Article':Article})
