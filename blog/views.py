@@ -14,3 +14,4 @@ def article(request, id):
     art = Article.objects.get(id=id)
 
     return render(request, 'blog/article.html', {'art':art})
+

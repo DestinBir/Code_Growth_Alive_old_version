@@ -154,6 +154,7 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 AUTH_USER_MODEL = "user.User"
 
+LOGIN_URL = "login"
 
 MDEDITOR_CONFIGS = {
     'default':{
