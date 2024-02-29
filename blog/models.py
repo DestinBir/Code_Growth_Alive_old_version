@@ -16,7 +16,7 @@ class Article(models.Model):
     titre = models.CharField(_('title'), max_length=255)
     theme = models.CharField(_('tag'), max_length=500)
     slug = models.SlugField(_('slug'), blank=True, null=True)
-    article = MDTextField(_('content'))
+    body = MDTextField(_('content'))
     created_at = models.DateTimeField(_('created_at'), auto_now_add=True)
     likes = models.IntegerField(default=0)
     author = models.ForeignKey(AUTH_USER_MODEL, related_name='article', on_delete=models.SET_NULL, null=True)
