@@ -17,3 +17,8 @@ def service_view(request):
 
 def contact_view(request):
     return render(request, "general/contact-us.html")
+
+
+def testimonial_view(request):
+    testimonials = FeedBack.objects.all()
+    return render(request, "general/testimonials.html", {"tests": testimonials})
