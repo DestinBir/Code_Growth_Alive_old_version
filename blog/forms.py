@@ -26,9 +26,39 @@ class ArticleForm(forms.ModelForm):
             'intro': forms.TextInput(attrs={'class':'input textarea has-fixed-size', 'rows':'3'}),
             'body': forms.TextInput(attrs={'class':'input textarea has-fixed-size', 'rows':'10'}),
             'link': forms.TextInput(attrs={'class':'input'})
-        }'''
+        }
 
 class MDEditorModleForm (forms.ModelForm):
     class Meta:
         model = Article
-        fields = '__all__'
+        fields = '__all__' '''
+
+Lang = (
+    ("Fr", "Fr"),
+    ("En", "En")
+)        
+
+class ArticleForm(forms.ModelForm):
+    body = MDTextFormField()
+
+    class Meta:
+        model = Article
+        fields = ('langue', 'titre', 'theme', 'slug', 'body', 'picture')
+        
+        labels = {
+            'langue': 'Langue',
+            'titre': 'Titre',
+            'theme': 'Theme',
+            'slug': 'Slug',
+            'body': 'Corps',
+            'picture': 'Image'
+        }
+        
+        widgets = {
+            'langue': forms.Select(choices=Lang, attrs={'class':'input'}),
+            'titre': forms.TextInput(attrs={'class':'input'}),
+            'theme': forms.TextInput(attrs={'class':'input'}),
+            'slug': forms.TextInput(attrs={'class':'input'}),
+            'body': forms.TextInput(attrs={'class':'input textarea has-fixed-size', 'rows':'10'}),
+            'picture': forms.FileInput(attrs={'class':'input'})
+        }
